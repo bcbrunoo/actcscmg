@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-style: italic;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #d72020;
+  }
+  #question-container {
+    text-align: center;
+  }
+  #no-button {
+    position: absolute;
+  }
+  #result-text {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+<div id="question-container">
+  <h1>Aceita casar comigo?</h1>
+  <button id="yes-button">Sim</button>
+  <button id="no-button">Não</button>
+  <div id="result-text">Parabéns por fazer a escolha certa! Eu te amo!</div>
+</div>
+<script>
+  const noButton = document.getElementById("no-button");
+  const resultText = document.getElementById("result-text");
+
+  function moveButton() {
+    const screenWidth = window.innerWidth - noButton.clientWidth;
+    const screenHeight = window.innerHeight - noButton.clientHeight;
+
+    const randomX = Math.random() * screenWidth;
+    const randomY = Math.random() * screenHeight;
+
+    noButton.style.left = `${randomX}px`;
+    noButton.style.top = `${randomY}px`;
+  }
+
+  noButton.addEventListener("mouseover", () => {
+    moveButton();
+  });
+
+  const yesButton = document.getElementById("yes-button");
+
+  yesButton.addEventListener("click", () => {
+    resultText.style.display = "block";
+  });
+</script>
+</body>
+</html>
